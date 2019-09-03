@@ -9,7 +9,7 @@ Quick shallow object schema for strict TS types.
 
 ```typescript
 import * as assert from 'assert';
-import validateObject from 'ts-object-schema';
+import validateObject from 'ts-shallow-object-schema';
 
 const testData: unknown = {
   testString: 'hello',
