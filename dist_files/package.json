@@ -1,0 +1,23 @@
+{
+  "name": "ts-object-schema",
+  "version": "0.1.0",
+  "description": "Shallow type checks an object based on a schema and returns if the type is compatible with the schema",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jannes-io/ts-object-schema.git"
+  },
+  "keywords": [
+    "type",
+    "typescript",
+    "schema"
+  ],
+  "author": "Jannes Drijkoningen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jannes-io/ts-object-schema/issues"
+  },
+  "homepage": "https://github.com/jannes-io/ts-object-schema#readme"
+}
