@@ -1,12 +1,66 @@
-# A&C themed components
+# TS Object Schema
 
-This package contains a collection of components, containers, ... to use in other React projects.
+Quick shallow object schema for strict TS types.
 
 ![License](https://img.shields.io/github/license/jannes-io/ts-object-schema)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue)](https://www.typescriptlang.org/) 
 [![Code Style](https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
+[![npm version](http://img.shields.io/npm/v/ts-shallow-object-schema.svg?style=flat)](https://npmjs.org/package/ts-shallow-object-schema "View this project on npm")
 
 ## Usage
+
+```typescript
+import * as assert from 'assert';
+import validateObject from 'ts-object-schema';
+
+const testData: unknown = {
+  testString: 'hello',
+  testInt: 5,
+  testObj: {
+    a: 'a',
+    b: 1,
+  },
+  testArr: [1, 2, 3],
+};
+
+interface ITest {
+  testString: string;
+  testInt: number;
+  testObj: object;
+  testArr: number[];
+  testOptional?: number;
+}
+
+const testSchema: Schema<ITest> = [{
+  key: 'testString',
+  type: 'string',
+}, {
+  key: 'testInt',
+  type: 'number',
+}, {
+  key: 'testObj',
+  type: 'object',
+}, {
+  key: 'testArr',
+  type: 'object',
+}, {
+  key: 'testOptional',
+  type: 'number',
+  optional: true,
+}];
+
+
+assert.strictEquals(validateObject(testSchema, testData), true); // true
+
+const otherSchema: Schema<ITest> = [{
+  key: 'missingKey',
+  type: 'string',
+}, ...testSchema];
+
+assert.strictEquals(validateObject(otherSchema, testData), false); // true
+```
+
+### Scripts
 
 Run a script using `yarn <script-name>`. To add/edit/remove scripts, see `scripts` section in `package.json`.
 

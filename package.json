@@ -1,9 +1,10 @@
 {
-  "name": "ts-object-schema",
+  "name": "ts-shallow-object-schema",
   "version": "0.1.0",
   "description": "Shallow type checks an object based on a schema and returns if the type is compatible with the schema",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "private": false,
   "scripts": {
     "lint": "tslint -p .",
     "build": "yarn lint && node build.js",

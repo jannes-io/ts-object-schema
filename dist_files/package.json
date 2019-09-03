@@ -1,5 +1,5 @@
 {
-  "name": "ts-object-schema",
+  "name": "ts-shallow-object-schema",
   "version": "0.1.0",
   "description": "Shallow type checks an object based on a schema and returns if the type is compatible with the schema",
   "main": "./index.js",
