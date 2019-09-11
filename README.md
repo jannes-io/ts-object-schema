@@ -9,6 +9,7 @@ Quick shallow object schema for strict TS types.
 ---
 
 Also available on NPM.
+
 [![NPM](https://nodei.co/npm/ts-shallow-object-schema.png)](https://nodei.co/npm/ts-shallow-object-schema/)
 
 ## Usage
