@@ -5,7 +5,11 @@ Quick shallow object schema for strict TS types.
 ![License](https://img.shields.io/github/license/jannes-io/ts-object-schema)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue)](https://www.typescriptlang.org/) 
 [![Code Style](https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
-[![npm version](http://img.shields.io/npm/v/ts-shallow-object-schema.svg?style=flat)](https://npmjs.org/package/ts-shallow-object-schema "View this project on npm")
+
+---
+
+Also available on NPM.
+[![NPM](https://nodei.co/npm/ts-shallow-object-schema.png)](https://nodei.co/npm/ts-shallow-object-schema/)
 
 ## Usage
 
