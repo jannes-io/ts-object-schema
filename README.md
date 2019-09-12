@@ -14,56 +14,7 @@ Also available on NPM.
 
 ## Usage
 
-```typescript
-import * as assert from 'assert';
-import validateObject from 'ts-shallow-object-schema';
-
-const testData: unknown = {
-  testString: 'hello',
-  testInt: 5,
-  testObj: {
-    a: 'a',
-    b: 1,
-  },
-  testArr: [1, 2, 3],
-};
-
-interface ITest {
-  testString: string;
-  testInt: number;
-  testObj: object;
-  testArr: number[];
-  testOptional?: number;
-}
-
-const testSchema: Schema<ITest> = [{
-  key: 'testString',
-  type: 'string',
-}, {
-  key: 'testInt',
-  type: 'number',
-}, {
-  key: 'testObj',
-  type: 'object',
-}, {
-  key: 'testArr',
-  type: 'object',
-}, {
-  key: 'testOptional',
-  type: 'number',
-  optional: true,
-}];
-
-
-assert.strictEquals(validateObject(testSchema, testData), true); // true
-
-const otherSchema: Schema<ITest> = [{
-  key: 'missingKey',
-  type: 'string',
-}, ...testSchema];
-
-assert.strictEquals(validateObject(otherSchema, testData), false); // true
-```
+For examples see [distribution README](dist_files/README.md)
 
 ### Scripts
 

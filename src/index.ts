@@ -2,6 +2,7 @@ export interface IField<T> {
   key: string & keyof T;
   type: 'number' | 'string' | 'boolean' | 'object' | 'array';
   optional?: boolean;
+  customValidator?: (data: T) => boolean;
 }
 
 export type Schema<T> = IField<T>[];
@@ -29,11 +30,28 @@ function simpleTypesCheck<T>(schema: Schema<T>, data: object): boolean {
   }).length === schema.length;
 }
 
-export default function isValidData<T>(schema: Schema<T>, data: unknown): data is T {
+function isTypeCorrect<T>(schema: Schema<T>, data: unknown): data is T {
   if (!isObj(data)) {
     return false;
   }
 
   const requiredKeys = schema.filter(({ optional }) => !optional).map(({ key }) => key);
   return hasAllRequiredFields(requiredKeys, data) && simpleTypesCheck(schema, data);
+}
+
+function runCustomValidation<T>(schema: Schema<T>, data: T): boolean {
+  const violatedFields = schema.filter((field) => {
+    if (field.customValidator !== undefined && field.key in data) {
+      return !field.customValidator(data);
+    }
+    return false;
+  });
+  return violatedFields.length === 0;
+}
+
+export default function isValidData<T>(schema: Schema<T>, data: unknown): data is T {
+  if (isTypeCorrect(schema, data)) {
+    return runCustomValidation(schema, data);
+  }
+  return false;
 }

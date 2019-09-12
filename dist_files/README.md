@@ -29,6 +29,8 @@ interface ITest {
   testOptional?: number;
 }
 
+const lengthValidator: (data: ITest) => boolean = (data) => data.testArr.length === 3;
+
 const testSchema: Schema<ITest> = [{
   key: 'testString',
   type: 'string',
@@ -40,7 +42,8 @@ const testSchema: Schema<ITest> = [{
   type: 'object',
 }, {
   key: 'testArr',
-  type: 'object',
+  type: 'array',
+  customValidator: lengthValidator,
 }, {
   key: 'testOptional',
   type: 'number',
