@@ -1,6 +1,6 @@
 export interface IField<T> {
   key: string & keyof T;
-  type: 'number' | 'string' | 'object';
+  type: 'number' | 'string' | 'boolean' | 'object' | 'array';
   optional?: boolean;
 }
 
@@ -22,6 +22,9 @@ function simpleTypesCheck<T>(schema: Schema<T>, data: object): boolean {
       return true;
     }
 
+    if (field.type === 'array') {
+      return Array.isArray(assertedData[field.key]);
+    }
     return typeof assertedData[field.key] === field.type;
   }).length === schema.length;
 }
@@ -31,6 +34,6 @@ export default function isValidData<T>(schema: Schema<T>, data: unknown): data i
     return false;
   }
 
-  const requiredKeys = schema.filter(field => !field.optional).map(field => field.key);
+  const requiredKeys = schema.filter(({ optional }) => !optional).map(({ key }) => key);
   return hasAllRequiredFields(requiredKeys, data) && simpleTypesCheck(schema, data);
 }

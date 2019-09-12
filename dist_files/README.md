@@ -1,6 +1,6 @@
 # TS Object Schema
 
-Quick shallow object schema for strict TS types.
+Quick shallow object schema for strict TS types with **0** dependencies.
 
 ![License](https://img.shields.io/github/license/jannes-io/ts-object-schema)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue)](https://www.typescriptlang.org/) 
